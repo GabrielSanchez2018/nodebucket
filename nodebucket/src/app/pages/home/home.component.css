@@ -11,3 +11,9 @@
   text-align: center;
   font-size: 14px;
 }
+
+.mat-card{
+  width: 50%;
+  margin: 0 auto;
+
+}

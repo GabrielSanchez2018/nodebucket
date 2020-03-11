@@ -7,6 +7,7 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const path = require('path');
 const mongoose = require('mongoose');
+const Employee = require("./models/employee")
 
 /**
  * App configurations
@@ -42,6 +43,10 @@ mongoose.connect(conn, {
 /**
  * API(s)
  */
+
+ app.post('/signup', function(req, res){
+   console.log(req.body.signup)
+ })
 
 /**
  * Create and start server
