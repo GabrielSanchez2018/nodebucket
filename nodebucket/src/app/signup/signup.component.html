@@ -17,12 +17,12 @@
   </nav>
 
   <mat-card>
-    <div class="container">
+    <!-- <div class="container">
       <h1>Sign up</h1>
       <form action="/signup" method="POST" >
         <div class="form-group">
-          <label for="emplooyeeID">Employee ID</label>
-          <input type="text" class="form-control" id="employeeID" name="employeeID"/>
+          <mat-label >Employee ID</mat-label>
+          <input type="text" matInput class="form-control" id="employeeID" name="employeeID"/>
           <br>
           <label for="firstName">First Name</label>
           <input type="text" class="form-control" id="firstName" name="firstName"/>
@@ -36,8 +36,37 @@
         <button type="submit" class="btn btn-success">Submit</button>
 
       </form>
-  </div>
-  </mat-card>
+  </div> -->
+<h2>Sign-up</h2>
+<form class="example-form">
+<mat-form-field class="example-full-width">
+<mat-label> Employee ID </mat-label>
+<input matInput placeholder="Employee Id" value="">
+</mat-form-field>
+<br>
+<mat-form-field class="example-full-width">
+  <mat-label> First Name </mat-label>
+  <input matInput placeholder="first name" value="">
+  </mat-form-field>
+  <br>
+<mat-form-field class="example-full-width">
+  <mat-label> Last Name </mat-label>
+  <input matInput placeholder="last name" value="">
+  </mat-form-field>
+  <br>
+  <mat-form-field appearance="fill">
+    <mat-label>Enter your password</mat-label>
+    <input matInput [type]="hide ? 'password' : 'text'">
+    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+    <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+    </button>
+  </mat-form-field>
+  <br>
+  <button mat-raised-button>Submit</button>
+</form>
+
+</mat-card>
+
 
 
   <div fxFlex>

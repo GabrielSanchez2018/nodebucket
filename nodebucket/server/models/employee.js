@@ -17,7 +17,8 @@ let EmployeeSchema = new Schema({
     password: {type:String, unique: true},
     createdAt: {type: Date, default: Date.now},
     task: [
-              {type:String},
+              {todo:String},
+              {done:String}
           ]
 
 

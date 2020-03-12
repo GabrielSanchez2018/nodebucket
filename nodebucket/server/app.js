@@ -43,11 +43,9 @@ mongoose.connect(conn, {
 /**
  * API(s)
  */
+app.get('/employeeId/:id', function(req, res){
 
- app.post('/signup', function(req, res){
-   console.log(req.body.signup)
- })
-
+});
 /**
  * Create and start server
  */
