@@ -9,6 +9,9 @@ const path = require('path');
 const mongoose = require('mongoose');
 const Employee = require("./models/employee")
 
+
+
+
 /**
  * App configurations
  */
@@ -25,7 +28,7 @@ app.use('/', express.static(path.join(__dirname, '../dist/nodebucket')));
 const port = 3000; // server port
 
 // TODO: This line will need to be replaced with your actual database connection string
-const conn = 'mongodb+srv://superadmin:s3cret@cluster0-lujih.mongodb.net/nodebucket?retryWrites=true&w=majority';
+const conn = "mongodb+srv://Gabriel:Jairo500!@cluster0-djivq.gcp.mongodb.net/nodebucket?retryWrites=true";
 
 /**
  * Database connection
@@ -43,9 +46,64 @@ mongoose.connect(conn, {
 /**
  * API(s)
  */
-app.get('/employeeId/:id', function(req, res){
+// app.get("/employees/:empId", function(req, res) {
+//   const id = req.params.empId;
+//   Employee.findById({id}, function(err, employees) {
+//       if (err) {
+//           console.log(err)
+//           throw err;
+//       } else {
+//           console.log(employees);
+//           res.render('/', {
+//               title: 'EMS|Home',
+//               employees: employees
+//           })
+//       }
+//   });
+// });
+app.get('/employees', (req, res) => {
+    Employee.find({}, (err, employees) =>{
+      if(err) return res.status(500).send({message: 'Error: ${err}'})
+      if(!employees) return res.status(404).send({message: 'The Employee Does not Exist'})
+
+      res.status(200).send({ employees })
+    })
+
+  });
+
+// app.get("/employees", function(req, res, next) {
+//   Employee.find({}, function(err, employees) {
+//     if (err) {
+//       console.log(err);
+//       return next(err);
+//     } else {
+//       console.log(employees);
+//       res.json(employees);
+//     }
+//   });
+// });
+
+
+app.get('/employees/:empId', (req, res) => {
+let empId = req.params.empId;
+  Employee.findById(empId, (err, employee) =>{
+    if(err) return res.status(500).send({message: 'Error: ${err}'})
+    if(!employee) return res.status(404).send({message: 'The Employee Does not Exist'})
+
+    res.status(200).send({ employee: employee })
+  })
 
 });
+
+// app.get('/employees/:employeeId', function(req, res, next){
+//   Employee.findOne({employeeId: req.params.employeeId}, function(err, employee){
+//     if(err) {return next(err);}
+//     if(!employee) {return next(404);}
+//     res.render('/', {employee: employee})
+//   })
+// })
+
+
 /**
  * Create and start server
  */

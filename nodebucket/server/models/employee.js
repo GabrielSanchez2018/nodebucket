@@ -11,19 +11,11 @@ var Schema = mongoose.Schema;
 
 
 let EmployeeSchema = new Schema({
-    employeeID: {type: String, required: true },
+    empId: {type: String, required: true },
     firstName:{type: String, required:true},//chapter 8 p128
     lastName:{type:String, required:true},
     password: {type:String, unique: true},
-    createdAt: {type: Date, default: Date.now},
-    task: [
-              {todo:String},
-              {done:String}
-          ]
-
-
-
-
+    //createdAt: {type: Date, default: Date.now},
 
 });
 
