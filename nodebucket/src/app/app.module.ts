@@ -1,4 +1,10 @@
-
+/*
+*============================
+*Author: Richard Krasso
+*Edited by: Gabriel Sanchez
+*Date: 3/10/2020
+*=============================
+*/
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
@@ -12,6 +18,7 @@ import { BaseLayoutComponent } from './shared/base-layout/base-layout.component'
 import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component';
 import { HomeComponent } from './pages/home/home.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
+import {CookieService} from 'ngx-cookie-service'
 import {
   MatButtonModule,
   MatIconModule,
@@ -24,8 +31,8 @@ import {
   MatCheckboxModule,
   MatListModule
 } from "@angular/material";
-import { LoginComponent } from './login/login.component';
-import { SignupComponent } from './signup/signup.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+
 
 
 @NgModule({
@@ -34,8 +41,8 @@ import { SignupComponent } from './signup/signup.component';
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    LoginComponent,
-    SignupComponent
+    SignInComponent
+
   ],
   imports: [
     BrowserModule,
@@ -56,7 +63,9 @@ import { SignupComponent } from './signup/signup.component';
     MatCheckboxModule,
     MatListModule
   ],
-  providers: [],
+  providers: [
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

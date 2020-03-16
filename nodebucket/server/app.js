@@ -1,3 +1,12 @@
+/*
+*============================
+*Author: Richard Krasso
+*Edited by: Gabriel Sanchez
+*Date: 3/10/2020
+*=============================
+*/
+
+
 /**
  * Require statements
  */
@@ -46,6 +55,7 @@ mongoose.connect(conn, {
 /**
  * API(s)
  */
+
 // app.get("/employees/:empId", function(req, res) {
 //   const id = req.params.empId;
 //   Employee.findById({id}, function(err, employees) {
@@ -61,7 +71,7 @@ mongoose.connect(conn, {
 //       }
 //   });
 // });
-app.get('/employees', (req, res) => {
+app.get('/api/employees', (req, res) => {
     Employee.find({}, (err, employees) =>{
       if(err) return res.status(500).send({message: 'Error: ${err}'})
       if(!employees) return res.status(404).send({message: 'The Employee Does not Exist'})
@@ -84,16 +94,18 @@ app.get('/employees', (req, res) => {
 // });
 
 
-app.get('/employees/:empId', (req, res) => {
-let empId = req.params.empId;
-  Employee.findById(empId, (err, employee) =>{
-    if(err) return res.status(500).send({message: 'Error: ${err}'})
-    if(!employee) return res.status(404).send({message: 'The Employee Does not Exist'})
-
-    res.status(200).send({ employee: employee })
-  })
-
+app.get('/api/employees/:empId', function (req, res, next) {
+  Employee.findOne({'empId': req.params.empId}, function(err, employee){
+    if(err){
+    console.log(err);
+    return next (err);
+  } else {
+    console.log(employee);
+    res.json(employee);
+  }
+})
 });
+
 
 // app.get('/employees/:employeeId', function(req, res, next){
 //   Employee.findOne({employeeId: req.params.employeeId}, function(err, employee){

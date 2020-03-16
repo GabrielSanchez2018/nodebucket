@@ -1,7 +1,9 @@
 /*
-Author: Gabriel Sanchez
-Edited by:
-Date: 3/10/2020
+*============================
+*Author: Richard Krasso
+*Edited by: Gabriel Sanchez
+*Date: 3/10/2020
+*=============================
 */
 
 var mongoose = require("mongoose");
@@ -13,8 +15,8 @@ var Schema = mongoose.Schema;
 let EmployeeSchema = new Schema({
     empId: {type: String, required: true },
     firstName:{type: String, required:true},//chapter 8 p128
-    lastName:{type:String, required:true},
-    password: {type:String, unique: true},
+    lastName:{type:String, required:true}
+
     //createdAt: {type: Date, default: Date.now},
 
 });

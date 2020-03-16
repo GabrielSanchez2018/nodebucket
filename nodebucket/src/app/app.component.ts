@@ -1,3 +1,11 @@
+/*
+*============================
+*Author: Richard Krasso
+*Edited by: Gabriel Sanchez
+*Date: 3/10/2020
+*=============================
+*/
+
 import { Component } from '@angular/core';
 
 @Component({
