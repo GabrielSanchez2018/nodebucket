@@ -7,37 +7,40 @@ import {Routes} from '@angular/router';
 *=============================
 */
 
-import {BaseLayoutComponent} from './shared/base-layout/base-layout.component';
-import {HomeComponent} from './pages/home/home.component';
-import {AuthLayoutComponent} from './shared/auth-layout/auth-layout.component'
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+
+import { BaseLayoutComponent } from "./shared/base-layout/base-layout.component";
+import { HomeComponent } from "./pages/home/home.component";
+import { SigninComponent } from "./pages/sign-in/sign-in.component";
+import { AboutComponent } from './pages/about/about.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
 
 export const AppRoutes: Routes = [
   {
-    path: '',
+    path: "",
     component: BaseLayoutComponent,
     children: [
       {
-        path: '',
+        path: "",
         component: HomeComponent
       },
       {
-        path: 'signin', component: SignInComponent
+        path: "signin",
+        component: SigninComponent
       },
-
-
-    ],
-
-  },
-  {
-  path: '',
-    component: AuthLayoutComponent,
-    children: [
       {
-        path: '',
-        component: HomeComponent
+        path: "about",
+        component: AboutComponent
+      },
+      {
+        path: "task-create-dialog",
+        component: TaskCreateDialogComponent
+      },
+      {
+        path: "**",
+        pathMatch: 'full',
+        component: NotFoundComponent
       }
     ]
-  },
-
+  }
 ];

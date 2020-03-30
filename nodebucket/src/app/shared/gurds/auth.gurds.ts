@@ -20,9 +20,13 @@ export class AuthGurd implements CanActivate {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const sessionUser = this.cookieService.get('session_user');
+    const sessionName = this.cookieService.get('name_user');
 
     // is the cookie is present, allow the user to access the app.
     if(sessionUser){
+      return true;
+    }
+    if (sessionName){
       return true;
     }
     else{

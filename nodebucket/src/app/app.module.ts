@@ -5,6 +5,7 @@
 *Date: 3/10/2020
 *=============================
 */
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule} from '@angular/router';
@@ -19,6 +20,9 @@ import { AuthLayoutComponent } from './shared/auth-layout/auth-layout.component'
 import { HomeComponent } from './pages/home/home.component';
 import {FlexLayoutModule} from '@angular/flex-layout';
 import {CookieService} from 'ngx-cookie-service'
+import {DragDropModule} from '@angular/cdk/drag-drop';
+
+
 import {
   MatButtonModule,
   MatIconModule,
@@ -29,9 +33,16 @@ import {
   MatToolbarModule,
   MatMenuModule,
   MatCheckboxModule,
-  MatListModule
+  MatListModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatDividerModule
 } from "@angular/material";
-import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SigninComponent } from './pages/sign-in/sign-in.component';
+import { AboutComponent } from './pages/about/about.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { TaskCreateDialogComponent } from './shared/task-create-dialog/task-create-dialog.component';
+import { AuthGurd } from './shared/gurds/auth.gurds';
 
 
 
@@ -41,7 +52,10 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     BaseLayoutComponent,
     AuthLayoutComponent,
     HomeComponent,
-    SignInComponent
+    SigninComponent,
+    AboutComponent,
+    NotFoundComponent,
+    TaskCreateDialogComponent,
 
   ],
   imports: [
@@ -61,10 +75,16 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
     MatSidenavModule,
     MatMenuModule,
     MatCheckboxModule,
-    MatListModule
+    MatListModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    DragDropModule,
+    MatDividerModule
+
+
   ],
   providers: [
-    CookieService
+    CookieService, AuthGurd
   ],
   bootstrap: [AppComponent]
 })

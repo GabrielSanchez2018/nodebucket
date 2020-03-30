@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SigninComponent } from './sign-in.component';
+import { TaskCreateDialogComponent } from './task-create-dialog.component';
 
-describe('SignInComponent', () => {
-  let component: SigninComponent;
-  let fixture: ComponentFixture<SigninComponent>;
+describe('TaskCreateDialogComponent', () => {
+  let component: TaskCreateDialogComponent;
+  let fixture: ComponentFixture<TaskCreateDialogComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SigninComponent ]
+      declarations: [ TaskCreateDialogComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SigninComponent);
+    fixture = TestBed.createComponent(TaskCreateDialogComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -8,6 +8,7 @@
 
 var mongoose = require("mongoose");
 var Schema = mongoose.Schema;
+const item = require('./item')
 
 // Employee Scheema
 
@@ -15,7 +16,9 @@ var Schema = mongoose.Schema;
 let EmployeeSchema = new Schema({
     empId: {type: String, required: true },
     firstName:{type: String, required:true},//chapter 8 p128
-    lastName:{type:String, required:true}
+    lastName:{type:String, required:true},
+    todo: [item],
+    done: [item]
 
     //createdAt: {type: Date, default: Date.now},
 

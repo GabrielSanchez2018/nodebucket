@@ -16,8 +16,10 @@
         <button class="logo" routerLink="/" mat-button>nodebucket</button>
 
         <button class="navbar-link" routerLink="/" mat-button>Home</button>
-        <button class="navbar-link" mat-button>About</button>
-        <button class="navbar-link" mat-button routerLink='/signin'>Sign-in</button>
+        <button class="navbar-link" routerLink="/about" mat-button>About</button>
+        <button class="navbar-link-right" mat-button routerLink='/signin'>Sign-in</button>
+        <!-- <button class="navbar-link" mat-button routerLink='/taskM'>Task</button> -->
+
       </div>
 
     </mat-toolbar>
@@ -27,6 +29,7 @@
   <div fxFlex>
     <main class="main-content" fxFlex="100%;">
       <router-outlet></router-outlet>
+
     </main>
   </div>
 

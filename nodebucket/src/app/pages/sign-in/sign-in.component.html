@@ -2,40 +2,39 @@
 *============================
 *Author: Richard Krasso
 *Edited by: Gabriel Sanchez
-*Date: 3/10/2020
+*Date: 3/20/2020
 *=============================
 */ -->
 
 
-  <mat-card>
-    <h2>Sing-in</h2>
-    <form class="example-form">
-    <mat-form-field class="example-full-width">
-    <mat-label> Employee ID </mat-label>
-    <input matInput placeholder="Employee Id" value="">
-    </mat-form-field>
-    <br>
-    <mat-form-field class="example-full-width">
-      <mat-label> First Name </mat-label>
-      <input matInput placeholder="first name" value="">
-      </mat-form-field>
-      <br>
-    <mat-form-field class="example-full-width">
-      <mat-label> Last Name </mat-label>
-      <input matInput placeholder="last name" value="">
-      </mat-form-field>
-      <br>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input matInput [type]="hide ? 'password' : 'text'">
-        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
-        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-        </button>
-      </mat-form-field>
-      <br>
-      <button mat-raised-button (click)="login()">Submit</button>
-    </form>
+<div fxLayout="column">
+  <mat-card fxFlex class="signin-container mat-elevation-z8">
+    <mat-card-title class="signin-title mat-headline">Employee Sign-in</mat-card-title><br />
+    <mat-card-subtitle class="signin-subtitle mat-headline">You must enter a valid employee id to proceed
+    </mat-card-subtitle>
+    <mat-card-content>
+      <mat-card class="mat-elevation-z0" fxLayout="column" fxLayoutGap="10px">
+        <form [formGroup]="form" (ngSubmit)="login(); form.reset()" #loginForm="ngForm">
 
-    </mat-card>
+          <mat-card-content>
 
+            <mat-form-field fxFlex>
+              <input matInput [formControl]="form.controls ['empId']" placeholder="Employee ID" />
+              <mat-error *ngIf="form.controls['empId'].hasError('required') && form.controls['empId'].touched">
+                Employee ID is a required field.
+              </mat-error>
+              <mat-error *ngIf="form.controls['empId'].hasError('pattern') && form.controls['empId'].touched">
+                Employee ID must be a numerical value.
+              </mat-error>
+            </mat-form-field>
 
+          </mat-card-content>
+
+          <mat-card-actions>
+            <button type="submit" fxFlex mat-raised-button [disabled]="!form.valid" color="primary">Submit</button>
+          </mat-card-actions>
+        </form>
+      </mat-card>
+    </mat-card-content>
+  </mat-card>
+</div>
